@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>WebGL Player, Replay</title>
+		<link rel="shortcut icon" href="TemplateData/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="TemplateData/style.css">
+		<script src="TemplateData/jquery.min.js"></script>
+		<script src="TemplateData/UnityProgress.js"></script>  
+		<script src="Build/UnityLoader.js"></script>
+		<script src="js/screenshot.js"></script>
+		<script src="js/RecordRTC.js"></script>
+		<script src="js/adapter-latest.js"></script>
+		<script src="js/unity_fun.js"></script>
+	</head>
+<body>
+	<div id="elementToShare" class="todo elementToShare">
+		<table style="width:100%">
+			<tr>
+				<th>
+					<div id="card-webgl">
+						<div class="content">
+							<div class="video" id="simu">
+								<div class="webgl-content">
+									<div id="gameContainer"></div>
+						
+										<div class="botones">
+											<button id="grabar" onclick="grabar(800, 600)"></button>
+											<button id="stopp" disabled="true" onclick="stop()"></button>
+											<button id="full" onclick="gameInstance.SetFullscreen(1)"></button>
+										</div>
+								</div>
+							</div>
+							<div class="video-replay" id="replay" style="display:none;">
+								<video  id="video" style="display:none;" controls loop></video>
+								<div id="dvolver" class="botones">
+									<button id="volver" onclick="cambio()"></button>	
+								</div>
+							</div>
+						</div>
+					</div>
+				</th>
+				<th>
+					<div id="card-dos">
+						<table class="both">
+							<tr>
+						       <td>
+						       		<table class="both">
+							<tr>
+						       <td>
+						       		<input type="button" name="" value="boton1">
+						       </td>
+						       <td>
+						       		Texto 1
+						       </td>
+						   </tr>
+						   <tr>
+						       <td>
+						       		<input type="button" name="" value="boton2">
+						       </td>
+						       <td>
+						       		Texto 2
+						       </td>
+						   </tr>
+						   <tr>
+						       <td>
+						       		<input type="button" name="" value="boton3">
+						       </td>
+						       <td>
+						       		Texto 3
+						       </td>
+						   </tr>
+						</table>
+						       </td>
+						       <td>
+						       		<table class="both">
+							<tr>
+						       <td>
+						       		<input type="checkbox" name="" value="0">
+						       </td>
+						       <td>
+						       		Texto 1
+						       </td>
+						   </tr>
+						   <tr>
+						       <td>
+						       		<input type="checkbox" name="" value="0">
+						       </td>
+						       <td>
+						       		Texto 2
+						       </td>
+						   </tr>
+						   <tr>
+						       <td>
+						       		<input type="checkbox" name="" value="0">
+						       </td>
+						       <td>
+						       		Texto 3
+						       </td>
+						   </tr>
+						</table>
+						       </td>
+						   </tr>
+						</table>
+					</div>
+				</th> 
+			</tr>
+
+			<tr>
+				<th>
+				    <input type="button" id="start" value="grabar"></input>
+				    <input type="button" id="stop" value="detener"></input>
+				</th>
+				<th>
+					<div class="card-tres">
+						<div class="video-replay2" id="replay">
+							<video id="video2" controls loop></video>
+						</div>
+					</div>
+					<div id="toast">
+						<div id="desc">Grabando...</div>
+					</div>
+				</th>
+			</tr>
+		</table>
+	</div>
+	<script src="js/funciones.js"></script>
+</body>
+</html>
