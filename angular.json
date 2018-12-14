@@ -25,7 +25,13 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/webgl/TemplateData/jquery.min.js",
+              "src/assets/webgl/TemplateData/UnityProgress.js",
+              "src/assets/js/screenshot.js",
+              "src/assets/js/RecordRTC.js",
+              "src/assets/js/adapter-latest.js"
+            ]
           },
           "configurations": {
             "production": {

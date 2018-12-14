@@ -1,0 +1,257 @@
+*  {
+	text-align: center;
+	margin: 0;
+}
+
+html  {
+	background: gray;
+	display: table-cell;
+	margin-bottom: 5%;
+}
+body {
+	margin: 25px;
+
+}
+
+
+#todo {
+	width: 380px;
+	height: 380px;
+     position:absolute;
+     display:inline;
+     top:0;
+     right:0;
+     width:200px;
+}
+
+
+
+
+
+button {
+	border: transparent;
+	background-position: center; 
+	background: transparent;
+}
+
+.content { /* animacion */
+	width: 375px;
+	height: 310px;
+	background: #222c36;
+	text-align: center;
+	position: relative;
+	float: left;
+}
+
+.video  { /* animacion */
+	width: 375px; 
+	height: 335px; 
+	margin-right: 5px;
+	padding-right: 5px;
+}
+
+
+
+video canvas{
+	position: relative;
+	width: 80%;
+	height: 95%;
+}
+
+.video-replay {
+	width: 100%;
+	height: 100%;
+	background: #222c36;
+}
+
+#full {
+	background-image: url('expandir.png'); 
+	width: 32px;
+	height: 32px;
+}
+
+#volver {
+	background-image: url('back.png'); 
+	width: 32px;
+	height: 32px;
+}
+
+#stopp {
+	background-image: url('detener.png'); 
+	background-position: center; 
+	width: 32px;
+	height: 32px;
+}
+
+#grabar {
+	background-image: url('rec.png'); 
+	width: 32px;
+	height: 32px;
+}
+
+.botones {
+	width: 100%;
+	height: 5%;
+	align-items: center;
+}
+
+.webgl-content .logo, .progress {position: absolute; left: 50%; top: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);}
+.webgl-content .logo {background: url('progressLogo.Light.png') no-repeat center / contain; width: 154px; height: 130px;}
+.webgl-content .progress {height: 18px; width: 141px; margin-top: 90px;}
+.webgl-content .progress .empty {background: url('progressEmpty.Light.png') no-repeat right / cover; float: right; width: 100%; height: 100%; display: inline-block;}
+.webgl-content .progress .full {background: url('progressFull.Light.png') no-repeat left / cover; float: left; width: 0%; height: 100%; display: inline-block;}
+.webgl-content .logo.Dark {background-image: url('progressLogo.Dark.png');}
+.webgl-content .progress.Dark .empty {background-image: url('progressEmpty.Dark.png');}
+.webgl-content .progress.Dark .full {background-image: url('progressFull.Dark.png');}
+.webgl-content .footer {margin-top: 5px; height: 38px; line-height: 38px; font-family: Helvetica, Verdana, Arial, sans-serif; font-size: 18px;} 
+.webgl-content .footer .webgl-logo, .title, .fullscreen {height: 100%; display: inline-block; background: transparent center no-repeat;} 
+.webgl-content .footer .webgl-logo {background-image: url('webgl-logo.png'); width: 204px; float: left;}
+.webgl-content .footer .title {margin-right: 10px; float: right;}
+.webgl-content .footer .fullscreen {background-image: url('fullscreen.png'); width: 38px; float: right;}
+
+#toast {
+    visibility: hidden;
+    max-width: 50px;
+    height: 50px;
+    /*margin-left: -125px;*/
+    margin: auto;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    position: fixed;
+    z-index: 1;
+    left: 0;right:0;
+    bottom: 30px;
+    font-size: 17px;
+    white-space: nowrap;
+}
+
+#toast #desc{
+    color: #fff;
+    padding: 16px;
+    overflow: hidden;
+	white-space: nowrap;
+}
+
+#toast.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 2s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 4s, fadeout 0.5s 4.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes expand {
+    from {min-width: 50px} 
+    to {min-width: 350px}
+}
+
+@keyframes expand {
+    from {min-width: 50px}
+    to {min-width: 350px}
+}
+@-webkit-keyframes stay {
+    from {min-width: 350px} 
+    to {min-width: 350px}
+}
+
+@keyframes stay {
+    from {min-width: 350px}
+    to {min-width: 350px}
+}
+@-webkit-keyframes shrink {
+    from {min-width: 350px;} 
+    to {min-width: 50px;}
+}
+
+@keyframes shrink {
+    from {min-width: 350px;} 
+    to {min-width: 50px;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 60px; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 60px; opacity: 0;}
+}
+
+#gameContainer { /* simulacion */
+	width: 375px;
+	height: 320px;
+}
+
+.webgl-content { /* animacion */
+	width: 375px;
+	height: 325px;
+}
+
+#card-webgl {
+	width: 400px;
+	height: 355px;
+	padding-top: 25px;
+	padding-left: 25px;
+	margin-bottom: 25px;
+	background: #E5E0E0;
+	text-align: center;
+
+	-moz-border-radius: 8px; 
+    -webkit-border-radius: 8px; 
+    border-radius: 8px; 
+}
+
+#card-dos {
+	width: 300px;
+	height: 150px;
+	padding: 25px;
+	background: #E5E0E0;
+	text-align: center;
+	-moz-border-radius: 8px; 
+    -webkit-border-radius: 8px; 
+    border-radius: 8px; 
+}
+
+#card-tres {
+	width: 300px;
+	height: 150px;
+	padding: 25px;
+	background: #E5E0E0;
+	text-align: center;
+	-moz-border-radius: 8px; 
+    -webkit-border-radius: 8px; 
+    border-radius: 8px; 
+}
+.footer {
+	width: 100%;
+    height: 5%;
+    align-items: center;
+}
+
+#dvolver {
+	width: 100%;
+	height: 5%;
+	align-items: center;
+}
+
+.horizontal {
+	border-collapse: separate;
+	border-spacing: 5px;
+	border: 1px solid #000;
+}
+
+.both {
+	border-collapse: separate;
+	border-spacing: 10px 20px;
+}
