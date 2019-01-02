@@ -1,24 +1,26 @@
 <div style="text-align:center">
-  <h1>holaa como estas</h1>  
+	<div class="row">
+		<div class="col-xs-12">
+			<video id="video"  class="video" controls>
+				<source src="{{ UrlSrc }}" type="video/webm">
+			</video>
+		</div>
+	</div>
 
-  <div class="row">
-  <div class="col-xs-12">
-    <video #video class="video"></video>
-  </div>
-</div>
-
-<div class="webgl-content">
-                  <div id="gameContainer"></div>
-            
-                    
-                </div>
-
-<div class="row">
-  <div class="col-xs-12">
-    <button md-raised-button color="primary" (click)="startRecording()"> Record </button>
-    <button md-raised-button color="primary"(click) ="stopRecording()"> Stop</button>
-    <button md-raised-button color="primary" (click)="download()"> Download</button>
-  </div>
-</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="webgl-content">
+				<div id="gameContainer">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<button md-raised-button color="primary" (click)="grabar()">Grabar</button>
+			<button md-raised-button color="primary" (click)="detener()">Detener</button>
+			<button md-raised-button color="primary" (click)="descargar()">Descargar</button>
+		</div>
+	</div>
 </div>
 <router-outlet></router-outlet>
