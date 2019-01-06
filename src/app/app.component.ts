@@ -19,6 +19,7 @@ export class AppComponent implements AfterViewInit, OnInit, OnChanges {
 	public grabador: any;
 	public elemento: any;
 	public video2: HTMLVideoElement;
+	ax: RecordRTC.CanvasRecorder;
 	UrlSrc:string;
 	
 
@@ -75,10 +76,30 @@ export class AppComponent implements AfterViewInit, OnInit, OnChanges {
 
 
 	grabar() {
+		/*
+			var elementToShare = document.getElementById('elementToShare'); 
+			var canvasRecorder = RecordRTC(
+				elementToShare,{ 
+					type : 'canvas', 
+					recorderType: CanvasRecorder 
+				}
+			);
+		*/
+
+		/*
+			this.elemento = document.querySelector('canvas');
+	        this.grabador = RecordRTC(
+	        	this.elemento, {
+	            	type: 'canvas',
+	            	showMousePointer: true
+	        	}
+	        );
+		*/
 		this.elemento = document.querySelector('canvas');
         this.grabador = RecordRTC(
         	this.elemento, {
             	type: 'canvas',
+            	recorderType: RecordRTC.CanvasRecorder, 
             	showMousePointer: true
         	}
         );

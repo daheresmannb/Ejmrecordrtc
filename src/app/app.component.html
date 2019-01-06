@@ -1,25 +1,36 @@
-<div style="text-align:center">
-	<div class="row">
-		<div class="col-xs-12">
-			<video id="video"  class="video" controls>
+<div id="todo" class="todo" style="text-align:center">
+	<div id="izquierda">
+		<div id="simu" class="outerL">
+			<div class="middle">
+				<div class="inner">
+					<div class="webgl-content">
+						<div id="gameContainer">
+
+						</div>
+					</div>
+					<div id="btns_rec">
+						<button mat-raised-button color="primary" color="primary" (click)="grabar()" [disabled]="rec">Grabar</button>
+						<button mat-raised-button color="primary" (click)="detener()" [disabled]="stop">Detener</button>
+						<button mat-raised-button color="primary" (click)="descargar()" [disabled]="down">Descargar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div hidden="true">
+			<video id="video" class="video" controls>
 				<source src="{{ UrlSrc }}" type="video/webm">
 			</video>
 		</div>
 	</div>
-
-	<div class="row">
-		<div class="col-xs-12">
-			<div class="webgl-content">
-				<div id="gameContainer">
+	<div id="derecha">
+		<div id="card1" class="outerR">
+			<div class="middle">
+				<div class="inner">
+					<mat-card>
+						hola
+					</mat-card>
 				</div>
 			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-12">
-			<button md-raised-button color="primary" (click)="grabar()">Grabar</button>
-			<button md-raised-button color="primary" (click)="detener()">Detener</button>
-			<button md-raised-button color="primary" (click)="descargar()">Descargar</button>
 		</div>
 	</div>
 </div>
