@@ -1,4 +1,4 @@
-import { Component, NgZone, OnInit, ViewChild, ElementRef, OnChanges, AfterViewInit } from '@angular/core';
+import { Component, NgZone, OnInit, ViewChild, ElementRef, OnChanges,AfterViewChecked, AfterViewInit } from '@angular/core';
 import * as RecordRTC from 'recordrtc';
 import * as $ from 'jquery';
 declare const UnityLoader;
@@ -11,26 +11,33 @@ declare const UnityProgress;
 })
 
 export class AppComponent implements AfterViewInit, OnInit, OnChanges {
-	private stream: MediaStream;
 	private recordRTC: any;
 	gameInstance: any;
-	public gameObject: any;
-	public unity: any;
-	public grabador: any;
-	public elemento: any;
-	public video2: HTMLVideoElement;
-	ax: RecordRTC.CanvasRecorder;
+	gameObject: any;
+	unity: any;
+	grabador: any;
+	elemento: any;
 	UrlSrc:string;
-	
-
+	rec: boolean;
+	stop: boolean
+	down: boolean;
+	width: any;
+	height: any;
 	@ViewChild('video') video: ElementRef;
+	@ViewChild('todo') elementView: ElementRef;
+	@ViewChild('canvas') canvas: ElementRef;
+    viewHeight: number;
 
-	constructor(private ngZone: NgZone) {
+
+	constructor(private ngZone: NgZone, private todo:ElementRef) {
 		this.unity = this.unity || {};
 		this.unity.GetUnityNumber = this.randomNumberFromUnity.bind(this);
 	}
 
 	public ngOnInit(): void {
+		this.rec = false;
+		this.stop = true;
+		this.down = true;
 		this.init();
 	}
 
@@ -39,7 +46,22 @@ export class AppComponent implements AfterViewInit, OnInit, OnChanges {
 	}
 
 	ngAfterViewInit() {
+	}
 
+	ngAfterViewChecked() {
+		
+	} 
+
+	onResize(event) {
+		//console.log(document.getElementById('simu').offsetWidth);
+		console.log(event.target.innerWidth);
+		console.log(event.target.innerHeight);
+
+		this.width = (event.target.innerHeight * 30) / 100; 
+		this.height = (event.target.innerHeight * 30) / 100;
+		console.log("waaa: " + document.getElementById("#canvas").offsetWidth);
+		//document.getElementById("#canvas").style.width = this.width;
+		//document.getElementById("#canvas").style.height = this.width;
 	}
 
 
@@ -68,12 +90,9 @@ export class AppComponent implements AfterViewInit, OnInit, OnChanges {
 		});
 	}
 
-
 	toggleVideo(event: any) {
 	    this.video.nativeElement.play();
 	}
-
-
 
 	grabar() {
 		/*
@@ -99,11 +118,14 @@ export class AppComponent implements AfterViewInit, OnInit, OnChanges {
         this.grabador = RecordRTC(
         	this.elemento, {
             	type: 'canvas',
-            	recorderType: RecordRTC.CanvasRecorder, 
+            	//recorderType: RecordRTC.CanvasRecorder, 
             	showMousePointer: true
         	}
         );
 		this.grabador.startRecording();
+		this.rec = true;
+		this.stop = false;
+		this.down = true;
 	}
 
 	detener() {
@@ -112,14 +134,22 @@ export class AppComponent implements AfterViewInit, OnInit, OnChanges {
 				let video: HTMLVideoElement = document.querySelector('video');
 		    	video.src = this.toURL();
 		    	this.UrlSrc = this.toURL();
-		    	 
+		    	
 			}
 		);
+		this.rec = false;
+		this.stop = true;
+		this.down = false;
 	}
-
-
 
 	descargar() {
 		this.grabador.save('video.webm');
+		this.rec = true;
+		this.stop = true;
+		this.down = false;
+	}
+
+	replay() {
+
 	}
 }

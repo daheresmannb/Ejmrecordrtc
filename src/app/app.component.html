@@ -1,18 +1,21 @@
-<div id="todo" class="todo" style="text-align:center">
+<div (window:resize)="onResize($event)" id="todo" class="todo">
 	<div id="izquierda">
-		<div id="simu" class="outerL">
+		<div id="simu" class="outer">
 			<div class="middle">
 				<div class="inner">
+					<mat-card>
 					<div class="webgl-content">
 						<div id="gameContainer">
-
+					
 						</div>
 					</div>
 					<div id="btns_rec">
-						<button mat-raised-button color="primary" color="primary" (click)="grabar()" [disabled]="rec">Grabar</button>
+						<button mat-raised-button color="primary" (click)="grabar()" [disabled]="rec">Grabar</button>
 						<button mat-raised-button color="primary" (click)="detener()" [disabled]="stop">Detener</button>
 						<button mat-raised-button color="primary" (click)="descargar()" [disabled]="down">Descargar</button>
+						<button mat-raised-button color="primary" (click)="replay()">Repeticiones</button>
 					</div>
+					</mat-card>
 				</div>
 			</div>
 		</div>
@@ -23,11 +26,40 @@
 		</div>
 	</div>
 	<div id="derecha">
-		<div id="card1" class="outerR">
+		<div id="card1" class="outer">
 			<div class="middle">
-				<div class="inner">
+				<div id="cont-der" class="inner">
 					<mat-card>
-						hola
+						<mat-card-content>
+							<h2 class="example-h2">Opciones</h2>
+
+							<section class="example-section">
+								<mat-checkbox class="example-margin" [(ngModel)]="checked">Checked</mat-checkbox>
+								<mat-checkbox class="example-margin" [(ngModel)]="indeterminate">Indeterminate</mat-checkbox>
+							</section>
+
+							<section class="example-section">
+								<label class="example-margin">Align:</label>
+								<mat-radio-group [(ngModel)]="labelPosition">
+								<mat-radio-button class="example-margin" value="after">After</mat-radio-button>
+								<mat-radio-button class="example-margin" value="before">Before</mat-radio-button>
+								</mat-radio-group>
+							</section>
+
+							<section class="example-section">
+								<mat-checkbox class="example-margin" [(ngModel)]="disabled">Disabled</mat-checkbox>
+							</section>
+						</mat-card-content>
+
+						<form class="example-form">
+						  <mat-form-field class="example-full-width">
+						    <input matInput placeholder="Comentarios" value="Sushi">
+						  </mat-form-field>
+
+						  <mat-form-field class="example-full-width">
+						    <textarea matInput placeholder="Comentarios"></textarea>
+						  </mat-form-field>
+						</form>
 					</mat-card>
 				</div>
 			</div>
