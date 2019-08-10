@@ -3,6 +3,7 @@ import * as RecordRTC from 'recordrtc';
 import * as $ from 'jquery';
 declare const UnityLoader;
 declare const UnityProgress;
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Component({
 	selector: 'app-root',
@@ -21,6 +22,7 @@ export class AppComponent implements AfterViewInit, OnInit, OnChanges {
 	rec: boolean;
 	stop: boolean
 	down: boolean;
+	blb: any;
 	width: any;
 	height: any;
 	@ViewChild('video') video: ElementRef;
@@ -29,7 +31,11 @@ export class AppComponent implements AfterViewInit, OnInit, OnChanges {
     viewHeight: number;
 
 
-	constructor(private ngZone: NgZone, private todo:ElementRef) {
+	constructor(
+			private ngZone: NgZone, 
+			private todo:ElementRef,
+            private client_http: HttpClient
+		) {
 		this.unity = this.unity || {};
 		this.unity.GetUnityNumber = this.randomNumberFromUnity.bind(this);
 	}
@@ -51,6 +57,16 @@ export class AppComponent implements AfterViewInit, OnInit, OnChanges {
 	ngAfterViewChecked() {
 		
 	} 
+
+	async CrearReplay(dato) {
+        //const headers = new HttpHeaders().set('Content-Type', 'application/json;');
+        await this.client_http.post(
+        	'/replay/crear',
+        	{
+        		file: dato
+        	}
+        );
+    }
 
 	onResize(event) {
 		//console.log(document.getElementById('simu').offsetWidth);
@@ -128,15 +144,20 @@ export class AppComponent implements AfterViewInit, OnInit, OnChanges {
 		this.down = true;
 	}
 
-	detener() {
-		this.grabador.stopRecording(
+	async detener() {
+		await this.grabador.stopRecording(
 			function () {
 				let video: HTMLVideoElement = document.querySelector('video');
 		    	video.src = this.toURL();
 		    	this.UrlSrc = this.toURL();
-		    	
+				this.blb = this.getBlob();
 			}
 		);
+
+	
+		let blob = await this.grabador.getBlob();
+		console.log(blob);
+
 		this.rec = false;
 		this.stop = true;
 		this.down = false;
@@ -147,6 +168,24 @@ export class AppComponent implements AfterViewInit, OnInit, OnChanges {
 		this.rec = true;
 		this.stop = true;
 		this.down = false;
+		console.log(this.grabador.getBlob());
+		this.CrearReplay(this.grabador.getBlob());
+
+		var file = new File(
+			[this.grabador.getBlob()], 
+			'filename.webm', {
+		        type: 'video/webm'
+		    }
+		);
+
+
+		let formData = new FormData(); 
+		formData.append(
+			"replay_unity", 
+			file,
+			"video.webm"
+		);
+
 	}
 
 	replay() {
